@@ -14,6 +14,7 @@ RUN npm ci --production
 COPY . /app/
 
 RUN npm i
+RUN sudo apt install chromium
 # Expose the port on which the application will run
 EXPOSE 8080
 
