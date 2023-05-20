@@ -13,6 +13,7 @@ RUN npm ci --production
 # Copy the remaining application files to the container
 COPY . /app/
 
+RUN npm i
 # Expose the port on which the application will run
 EXPOSE 8080
 
