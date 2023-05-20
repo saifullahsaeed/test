@@ -18,4 +18,4 @@ RUN npm i
 EXPOSE 8080
 
 # Set the entry point command to run the application
-CMD ["node", "index.js"]
+CMD ["node", "whatsapp.js"]
