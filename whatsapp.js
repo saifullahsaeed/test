@@ -1,19 +1,21 @@
 const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const puppeteer = require('puppeteer-core');
+const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+
+puppeteer.use(StealthPlugin());
+
 const client = new Client({
-  puppeteer: {
-    executablePath: puppeteer.executablePath(),
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  },
+  puppeteer: puppeteer,
+  headless: true,
+  args: ['--no-sandbox', '--disable-setuid-sandbox'],
 });
 
 const messagePrefix = "#B:";
 
 async function runBard(msg) {
-
-  const { init, askAI } = await import("bard-ai");
+  const { init, askAI ,Chat} = await import("bard-ai");
+  
   await init("WwgQ-vtIJ9mBP_llStJ2rjZwS_2pnHX-bkYS-qFhytt_nN5e31crTMrg7sI0H9SRZC75cQ.");
   let myConversation = new Chat();
   let response = await myConversation.ask(msg);
