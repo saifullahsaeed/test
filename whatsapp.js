@@ -7,6 +7,7 @@ puppeteer.use(StealthPlugin());
 
 const client = new Client({
   puppeteer: puppeteer,
+  session: null, // Remove session configuration
   headless: true,
   args: ['--no-sandbox', '--disable-setuid-sandbox'],
 });
@@ -14,8 +15,8 @@ const client = new Client({
 const messagePrefix = "#B:";
 
 async function runBard(msg) {
-  const { init, askAI ,Chat} = await import("bard-ai");
-  
+  const { init, askAI, Chat } = await import("bard-ai");
+
   await init("WwgQ-vtIJ9mBP_llStJ2rjZwS_2pnHX-bkYS-qFhytt_nN5e31crTMrg7sI0H9SRZC75cQ.");
   let myConversation = new Chat();
   let response = await myConversation.ask(msg);
