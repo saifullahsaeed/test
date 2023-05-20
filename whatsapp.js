@@ -1,8 +1,5 @@
 const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
-const puppeteer = require('puppeteer-core');
-const Bard = require('bard-ai');
-
 const client = new Client({
   puppeteer: {
     executablePath: puppeteer.executablePath(),
@@ -14,8 +11,10 @@ const client = new Client({
 const messagePrefix = "#B:";
 
 async function runBard(msg) {
-  await Bard.init("WwgQ-vtIJ9mBP_llStJ2rjZwS_2pnHX-bkYS-qFhytt_nN5e31crTMrg7sI0H9SRZC75cQ.");
-  let myConversation = new Bard.Chat();
+
+  const { init, askAI } = await import("bard-ai");
+  await init("WwgQ-vtIJ9mBP_llStJ2rjZwS_2pnHX-bkYS-qFhytt_nN5e31crTMrg7sI0H9SRZC75cQ.");
+  let myConversation = new Chat();
   let response = await myConversation.ask(msg);
   return response;
 }
