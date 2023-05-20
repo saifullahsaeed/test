@@ -1,5 +1,6 @@
 const { Client } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const puppeteer = require('puppeteer-core');
 const client = new Client({
   puppeteer: {
     executablePath: puppeteer.executablePath(),
